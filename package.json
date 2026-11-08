@@ -1,0 +1,7 @@
+{
+  "name": "labirinto-do-poder-ancestral",
+  "version": "1.0.0",
+  "description": "Jogo 3D de exploração e enigmas de luz em primeira pessoa (JavaScript + Three.js)",
+  "type": "module",
+  "private": true
+}

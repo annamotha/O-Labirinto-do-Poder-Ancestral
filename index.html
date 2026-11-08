@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>O Labirinto do Poder Ancestral</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lacquer&family=Rubik+Wet+Paint&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <!-- O Three.js está na pasta lib/ (o jogo funciona sem internet) -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "./lib/three/build/three.module.js",
+      "three/addons/": "./lib/three/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+  <!-- ===================== HUD (durante o jogo) ===================== -->
+  <div id="hud" class="escondido">
+    <div id="hud-status">
+      <div id="hud-vidas"></div>
+      <div id="hud-reliquias"></div>
+    </div>
+    <div id="hud-area">
+      <div id="hud-area-nome"></div>
+      <div id="hud-objetivo"></div>
+    </div>
+    <div id="hud-lanterna">
+      <div id="hud-lanterna-gema"></div>
+      <div>
+        <div id="hud-lanterna-cor">Lanterna vazia</div>
+        <div id="hud-lanterna-poder"></div>
+      </div>
+    </div>
+    <div id="hud-prompt"></div>
+    <div id="hud-reinicio"><div id="hud-reinicio-barra"></div></div>
+    <div id="mira"></div>
+  </div>
+
+  <div id="toasts"></div>
+  <div id="titulo-area"><small></small><span></span></div>
+  <div id="vinheta"></div>
+  <div id="fade"></div>
+  <div id="flash-dano"></div>
+
+  <!-- ===================== Morte ===================== -->
+  <div id="morte" class="tela escondido">
+    <div class="painel">
+      <h1 class="vermelho">Você sucumbiu à escuridão</h1>
+      <p class="historia">A lanterna se apaga... e volta a acender na entrada da área.</p>
+    </div>
+  </div>
+
+  <!-- ===================== Menu inicial / pausa ===================== -->
+  <div id="menu" class="tela">
+    <div class="painel">
+      <h1>O Labirinto<br><span>do Poder Ancestral</span></h1>
+      <p id="menu-historia" class="historia"></p>
+      <p id="menu-pausa" class="historia escondido">Jogo pausado.</p>
+      <button id="botao-jogar">Entrar no labirinto</button>
+      <div class="controles">
+        <div><b>W A S D</b> andar</div>
+        <div><b>Mouse</b> olhar</div>
+        <div><b>Shift</b> correr</div>
+        <div><b>E</b> ou <b>clique</b> trocar luz / ler / interagir</div>
+        <div><b>F</b> ligar/desligar lanterna</div>
+        <div><b>Segurar R</b> reiniciar a área</div>
+        <div><b>♥ ♥ ♥ ♥</b> inimigos tiram 1 coração</div>
+        <div><b>Esc</b> pausar</div>
+        <div><b>B</b> liga/desliga brilho (PC lento)</div>
+      </div>
+      <p class="cores">
+        <span class="azul">Azul — existência</span> ·
+        <span class="vermelho">Vermelho — força</span> ·
+        <span class="dourado">Dourado — revelação</span>
+      </p>
+    </div>
+  </div>
+
+  <!-- ===================== Leitura de inscrição ===================== -->
+  <div id="leitura" class="tela escondido">
+    <div class="painel pergaminho">
+      <h2 id="leitura-titulo">Inscrição</h2>
+      <p id="leitura-texto"></p>
+      <small>E ou clique para fechar</small>
+    </div>
+  </div>
+
+  <!-- ===================== Escolha final ===================== -->
+  <div id="escolha" class="tela escondido">
+    <div class="painel">
+      <h2>O Núcleo Ancestral</h2>
+      <p class="historia">
+        O Núcleo pulsa diante de você: azul, vermelho, dourado. Três luzes seguram o selo.
+        A lanterna em sua mão vibra, faminta. Nas profundezas, algo antigo também espera por este momento.
+        Tomar o poder é ser livre hoje — e libertar o amanhã.
+      </p>
+      <div class="botoes">
+        <button id="botao-tomar">Tomar o poder</button>
+        <button id="botao-preservar">Preservar o selo</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== Tela final ===================== -->
+  <div id="final" class="tela escondido">
+    <div class="painel">
+      <h1 id="final-titulo"></h1>
+      <p id="final-texto" class="historia"></p>
+      <p id="final-tempo"></p>
+      <button id="botao-recomecar">Jogar novamente</button>
+      <p class="creditos">Feito com JavaScript + Three.js · sons sintetizados com Web Audio</p>
+    </div>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
